@@ -28,5 +28,9 @@ namespace ShrimpfulAdventure {
         public static bool RightPressed() {
             return KeyPressed(Keys.Right, false) || KeyPressed(Keys.D, false);
         }
+
+        public static bool InteractPressed() {
+            return KeyPressed(Keys.Down, true) || KeyPressed(Keys.S, true);
+        }
     }
 }
