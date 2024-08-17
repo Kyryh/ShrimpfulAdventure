@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Diagnostics;
 using ShrimpfulAdventure.Components;
+using ShrimpfulAdventure.Scenes;
 
 namespace ShrimpfulAdventure {
     public class ShrimpfulGame : KGame {
@@ -36,8 +37,12 @@ namespace ShrimpfulAdventure {
 
             SetDrawingLayersSettings(new(SamplerState: SamplerState.PointClamp), new(){ });
 
+            InitSprites(
+                new SpriteSheet("Sprites/ShrimpTogether", new Vector2(16,25), false, scale: new Vector2(1/16f))
+            );
+
             SetScenes(
-                ("FirstScene", () => { })
+                ("Scene1", Scene1.Load)
             );
         }
 
