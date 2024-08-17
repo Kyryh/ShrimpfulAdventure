@@ -14,11 +14,19 @@ namespace ShrimpfulAdventure {
             kstate = Keyboard.GetState();
         }
 
-        static bool KeyPressed(Keys key) {
-            return oldKstate[key] == KeyState.Up && kstate[key] == KeyState.Down;
+        static bool KeyPressed(Keys key, bool thisFrame) {
+            return kstate[key] == KeyState.Down && (!thisFrame || oldKstate[key] == KeyState.Up);
         }
         public static bool JumpPressed() {
-            return KeyPressed(Keys.Up) || KeyPressed(Keys.W);
+            return KeyPressed(Keys.Up, true) || KeyPressed(Keys.W, true);
+        }
+
+        public static bool LeftPressed() {
+            return KeyPressed(Keys.Left, false) || KeyPressed(Keys.A, false);
+        }
+
+        public static bool RightPressed() {
+            return KeyPressed(Keys.Right, false) || KeyPressed(Keys.D, false);
         }
     }
 }
