@@ -28,13 +28,33 @@ namespace ShrimpfulAdventure.Scenes {
                     new SpriteRenderer() {
                         spriteName = "Sprites/ShrimpTogether"
                     },
-                    new ShrimpController(),
+                    new FatherController(),
                     new BoxCollider() {
                         Width = 7/8f,
                         Height = 7/8f,
-                        //Offset = new Vector2(0,-0.25f)
-                        Offset = new Vector2(0,-0.28125f)
+                        Layer = "ShrimpFather"
+                    },
+                    new BoxCollider() {
+                        IsTrigger = true,
+                        Layer = "BabyFatherInteraction"
                     }
+                ],
+                children: [
+                    new GameObject(
+                        "Baby",
+                        components: [
+                            new SpriteRenderer() {
+                                spriteName = "Sprites/ShrimpBaby"
+                            },
+                            new BabyController(),
+                            new BoxCollider() {
+                                Width = 7/16f,
+                                Height = 7/16f,
+                                Layer = "ShrimpBaby"
+                            }
+                        ],
+                        active: false
+                    )
                 ]
             ).Load();
 
@@ -45,7 +65,7 @@ namespace ShrimpfulAdventure.Scenes {
                         IsStatic = true
                     }
                 ],
-                position: new Vector2(0,-1),
+                position: new Vector2(0,-3),
                 scale: new Vector2(10,1)
             ).Load();
 
@@ -54,7 +74,7 @@ namespace ShrimpfulAdventure.Scenes {
                 components: [
                     new BoxCollider()
                 ],
-                position: new Vector2(1, 0)
+                position: new Vector2(1, -2)
             ).Load();
 
 

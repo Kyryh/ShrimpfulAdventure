@@ -15,6 +15,16 @@ namespace ShrimpfulAdventure.Components {
         AnimationController ac;
         Collider collider;
         TimeSpan timeSinceGrounded = TimeSpan.Zero;
+        protected Vector2 velocity = Vector2.Zero;
+
+        float acceleration = 0.1f;
+        float maxSpeed = 0.05f;
+        float jumpForce = 0.1f;
+        float gravity = 0.25f;
+        float horizontalVelocityInfluenceOnJump = 1f;
+        float coyoteTimeSeconds = 0.2f;
+
+        public bool controlling = true;
         public override void Initialize() {
             base.Initialize();
             ac = GameObject.GetComponent<AnimationController>();
@@ -23,8 +33,8 @@ namespace ShrimpfulAdventure.Components {
         }
 
         private void OnCollision(Collider other, Collider.HitInfo hitInfo) {
-            if (hitInfo.direction == GameConstants.Vector2.Up) {
-                Console.WriteLine("touched gorund");
+            if (hitInfo.direction == GameConstants.Vector2.Down) {
+                velocity = new Vector2(velocity.X, MathF.Max(0,velocity.Y));
                 timeSinceGrounded = TimeSpan.Zero;
             }
         }
@@ -34,11 +44,37 @@ namespace ShrimpfulAdventure.Components {
         public override void Update(float deltaTime) {
             base.Update(deltaTime);
 
-            var kstate = Keyboard.GetState();
+            bool movementPressed = false;
+            if (controlling) {
+                if (timeSinceGrounded < TimeSpan.FromSeconds(coyoteTimeSeconds) && Input.JumpPressed()) {
+                    velocity.Y = jumpForce+MathF.Abs(velocity.X)*horizontalVelocityInfluenceOnJump;
+                }
 
-            if (timeSinceGrounded < TimeSpan.FromSeconds(0.2f))
+                if (Input.LeftPressed()) {
+                    movementPressed = true;
+                    velocity.X -= acceleration*deltaTime;
+                }
 
-            Transform.Position += new Vector2(0, -0.05f);
+                if (Input.RightPressed()) {
+                    movementPressed = true;
+                    velocity.X += acceleration * deltaTime;
+                }
+
+            }
+
+
+            if (movementPressed) {
+                velocity.X = MathF.Max(MathF.Min(velocity.X, maxSpeed), -maxSpeed);
+            } else {
+                velocity.X += velocity.X > 0 ? -MathF.Min(velocity.X, acceleration*deltaTime) : -MathF.Max(velocity.X, -acceleration*deltaTime);
+            }
+
+
+            velocity.Y -= gravity*deltaTime;
+
+            Transform.Position += velocity;
+
+            timeSinceGrounded += TimeSpan.FromSeconds(deltaTime);
         }
     }
 }
