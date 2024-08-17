@@ -20,7 +20,7 @@ namespace ShrimpfulAdventure.Components {
         public override void Initialize() {
             base.Initialize();
             LoadMap(MapName + ".txt");
-            texture = KGame.GetContent<Texture2D>("white");
+            texture = KGame.GetContent<Texture2D>("Sprites/white");
         }
 
         void LoadMap(string fileName) {
