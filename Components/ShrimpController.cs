@@ -82,6 +82,7 @@ namespace ShrimpfulAdventure.Components {
             int direction = 0;
             if (controlling) {
                 if (timeSinceGrounded < TimeSpan.FromSeconds(CoyoteTimeSeconds) && Input.JumpPressed()) {
+                    timeSinceGrounded += TimeSpan.FromSeconds(0.2f);
                     velocity.Y = JumpForce+MathF.Abs(velocity.X)*HorizontalVelocityInfluenceOnJump;
                 }
 
