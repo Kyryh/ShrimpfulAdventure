@@ -26,6 +26,7 @@ namespace ShrimpfulAdventure.Components {
         public float Gravity { get; init; } = 0.25f;
         public float HorizontalVelocityInfluenceOnJump { get; init; } = 1f;
         public float CoyoteTimeSeconds { get; init; } = 0.2f;
+        public float PushingForce { get; init; } = 0.02f;
 
         public bool controlling = true;
         public override void Initialize() {
@@ -41,6 +42,19 @@ namespace ShrimpfulAdventure.Components {
                 timeSinceGrounded = TimeSpan.Zero;
             } else if (hitInfo.direction == GameConstants.Vector2.Up) {
                 velocity.Y = MathF.Min(0, velocity.Y);
+            } else if (other.IsStatic) {
+                if (hitInfo.direction == GameConstants.Vector2.Left) {
+                    velocity.X = MathF.Max(0, velocity.X);
+                } else if (hitInfo.direction == GameConstants.Vector2.Right) {
+                    velocity.X = MathF.Min(0, velocity.X);
+                }
+            } else {
+                if (hitInfo.direction == GameConstants.Vector2.Left) {
+                    velocity.X = MathF.Max(-PushingForce, velocity.X);
+                }
+                else if (hitInfo.direction == GameConstants.Vector2.Right) {
+                    velocity.X = MathF.Min(PushingForce, velocity.X);
+                }
             }
         }
 

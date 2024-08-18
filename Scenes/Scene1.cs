@@ -87,7 +87,8 @@ namespace ShrimpfulAdventure.Scenes {
                                 JumpForce = GetValue(data[17]),
                                 Gravity = GetValue(data[18]),
                                 HorizontalVelocityInfluenceOnJump = GetValue(data[19]),
-                                CoyoteTimeSeconds = GetValue(data[20])
+                                CoyoteTimeSeconds = GetValue(data[20]),
+                                PushingForce = -.005f
                             },
                             new BoxCollider() {
                                 Width = 7/16f,
