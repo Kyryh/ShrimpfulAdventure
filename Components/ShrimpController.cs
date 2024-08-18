@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace ShrimpfulAdventure.Components {
     internal class ShrimpController : Component {
         AnimationController ac;
-        Collider collider;
+        protected Collider collider;
         TimeSpan timeSinceGrounded = TimeSpan.Zero;
         protected Vector2 velocity = Vector2.Zero;
 

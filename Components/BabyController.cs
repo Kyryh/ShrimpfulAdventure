@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 namespace ShrimpfulAdventure.Components {
     internal class BabyController : ShrimpController {
         ShrimpController father;
-        Collider collider;
         public override void Initialize() {
             father = Transform.Parent.GameObject.GetComponent<ShrimpController>();
-            collider = GameObject.GetComponent<Collider>();
+
             base.Initialize();
         }
         public override void Update(float deltaTime) {
