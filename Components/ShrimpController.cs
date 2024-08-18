@@ -17,7 +17,10 @@ namespace ShrimpfulAdventure.Components {
         TimeSpan timeSinceGrounded = TimeSpan.Zero;
         protected Vector2 velocity = Vector2.Zero;
 
-        public float Acceleration { get; init; } = 0.1f;
+        public float GroundAcceleration { get; init; } = 0.1f;
+        public float AirAcceleration { get; init; } = 0.1f;
+        public float GroundDeceleration { get; init; } = 0.5f;
+        public float AirDeceleration { get; init; } = 0.05f;
         public float MaxSpeed { get; init; } = 0.05f;
         public float JumpForce { get; init; } = 0.1f;
         public float Gravity { get; init; } = 0.25f;
@@ -39,35 +42,44 @@ namespace ShrimpfulAdventure.Components {
             }
         }
 
+        float GetMovement(int direction, float deltaTime) {
 
+            int sign = MathF.Sign(velocity.X);
+            if (sign == 0) {
+                if (direction == 0)
+                    return 0f;
+                sign = direction;
+            }
+
+            if (sign == direction) {
+                float acceleration = sign * (timeSinceGrounded == TimeSpan.Zero ? GroundAcceleration : AirAcceleration);
+                return acceleration * deltaTime;
+            } else {
+                float acceleration = timeSinceGrounded == TimeSpan.Zero ? GroundDeceleration : AirDeceleration;
+                return -sign * MathF.Min(acceleration * deltaTime, MathF.Abs(velocity.X));
+            }
+        }
 
         public override void Update(float deltaTime) {
             base.Update(deltaTime);
 
-            bool movementPressed = false;
+            int direction = 0;
             if (controlling) {
                 if (timeSinceGrounded < TimeSpan.FromSeconds(CoyoteTimeSeconds) && Input.JumpPressed()) {
                     velocity.Y = JumpForce+MathF.Abs(velocity.X)*HorizontalVelocityInfluenceOnJump;
                 }
 
-                if (Input.LeftPressed()) {
-                    movementPressed = true;
-                    velocity.X -= Acceleration*deltaTime;
-                }
+                if (Input.LeftPressed())
+                    direction--;
+                if (Input.RightPressed())
+                    direction++;
 
-                if (Input.RightPressed()) {
-                    movementPressed = true;
-                    velocity.X += Acceleration * deltaTime;
-                }
 
             }
 
+            velocity.X += GetMovement(direction, deltaTime);
+            velocity.X = MathF.Max(MathF.Min(velocity.X, MaxSpeed), -MaxSpeed);
 
-            if (movementPressed) {
-                velocity.X = MathF.Max(MathF.Min(velocity.X, MaxSpeed), -MaxSpeed);
-            } else {
-                velocity.X += velocity.X > 0 ? -MathF.Min(velocity.X, Acceleration*deltaTime) : -MathF.Max(velocity.X, -Acceleration*deltaTime);
-            }
 
 
             velocity.Y -= Gravity*deltaTime;
