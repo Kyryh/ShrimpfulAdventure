@@ -1,0 +1,21 @@
+﻿FATHER
+GroundAcceleration = 0,1
+AirAcceleration = 0,1
+GroundDeceleration = 0,1
+AirDeceleration = 0,1
+MaxSpeed = 0,05
+JumpForce = 0,1
+Gravity = 0,25
+HorizontalVelocityInfluenceOnJump = 1
+CoyoteTimeSeconds = 0,2
+
+BABY
+GroundAcceleration = 0,1
+AirAcceleration = 0,1
+GroundDeceleration = 0,1
+AirDeceleration = 0,1
+MaxSpeed = 0,05
+JumpForce = 0,1
+Gravity = 0,25
+HorizontalVelocityInfluenceOnJump = 1
+CoyoteTimeSeconds = 0,2

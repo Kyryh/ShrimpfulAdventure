@@ -64,3 +64,6 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/White.png;Sprites/white.png
 
+#begin valori.txt
+/copy:valori.txt
+

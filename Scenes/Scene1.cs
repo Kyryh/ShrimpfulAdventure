@@ -11,7 +11,16 @@ using System.Threading.Tasks;
 
 namespace ShrimpfulAdventure.Scenes {
     internal class Scene1 {
+
+        static float GetValue(string str) {
+            var p = str.Split(" ")[^1];
+            return float.Parse(p);
+        }
         public static void Load() {
+
+
+            string directory = Path.Combine(Directory.GetCurrentDirectory(), "Content");
+            var data = File.ReadAllLines(Path.Combine(directory, "valori.txt"));
 
             new GameObject(
                 "Map",
@@ -29,14 +38,21 @@ namespace ShrimpfulAdventure.Scenes {
                         spriteName = "Sprites/ShrimpTogether"
                     },
                     new FatherController() {
-                        // YAKERI MODIFICA QUESTI!!!!!!!!!!!!!!!!!!!!!!!!!
-                        Acceleration = 0.1f,
-                        MaxSpeed = 0.05f,
-                        JumpForce = 0.1f,
-                        Gravity = 0.25f,
-                        HorizontalVelocityInfluenceOnJump = 1f,
-                        CoyoteTimeSeconds = 0.2f
-                        // BASTA FINITO NON CE' ALTRO
+                        //Acceleration = 0.1f,
+                        //MaxSpeed = 0.05f,
+                        //JumpForce = 0.1f,
+                        //Gravity = 0.25f,
+                        //HorizontalVelocityInfluenceOnJump = 1f,
+                        //CoyoteTimeSeconds = 0.2f
+                        GroundAcceleration = GetValue(data[1]),
+                        AirAcceleration = GetValue(data[2]),
+                        GroundDeceleration = GetValue(data[3]),
+                        AirDeceleration = GetValue(data[4]),
+                        MaxSpeed = GetValue(data[5]),
+                        JumpForce = GetValue(data[6]),
+                        Gravity = GetValue(data[7]),
+                        HorizontalVelocityInfluenceOnJump = GetValue(data[8]),
+                        CoyoteTimeSeconds = GetValue(data[9])
                     },
                     new BoxCollider() {
                         Width = 7/8f,
@@ -56,14 +72,21 @@ namespace ShrimpfulAdventure.Scenes {
                                 spriteName = "Sprites/ShrimpBaby"
                             },
                             new BabyController() {
-                                // SCHERZAVO CI SONO ANCHE QUESTI!!!!!!!!!!!!!!!!!!!!!!!!
-                                Acceleration = 0.1f,
-                                MaxSpeed = 0.05f,
-                                JumpForce = 0.1f,
-                                Gravity = 0.25f,
-                                HorizontalVelocityInfluenceOnJump = 1f,
-                                CoyoteTimeSeconds = 0.2f
-                                // e poi bastya per davvero
+                                //Acceleration = 0.1f,
+                                //MaxSpeed = 0.05f,
+                                //JumpForce = 0.1f,
+                                //Gravity = 0.25f,
+                                //HorizontalVelocityInfluenceOnJump = 1f,
+                                //CoyoteTimeSeconds = 0.2f
+                                GroundAcceleration = GetValue(data[12]),
+                                AirAcceleration = GetValue(data[13]),
+                                GroundDeceleration = GetValue(data[14]),
+                                AirDeceleration = GetValue(data[15]),
+                                MaxSpeed = GetValue(data[16]),
+                                JumpForce = GetValue(data[17]),
+                                Gravity = GetValue(data[18]),
+                                HorizontalVelocityInfluenceOnJump = GetValue(data[19]),
+                                CoyoteTimeSeconds = GetValue(data[20])
                             },
                             new BoxCollider() {
                                 Width = 7/16f,
