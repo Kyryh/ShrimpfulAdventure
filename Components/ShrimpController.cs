@@ -17,12 +17,12 @@ namespace ShrimpfulAdventure.Components {
         TimeSpan timeSinceGrounded = TimeSpan.Zero;
         protected Vector2 velocity = Vector2.Zero;
 
-        float acceleration = 0.1f;
-        float maxSpeed = 0.05f;
-        float jumpForce = 0.1f;
-        float gravity = 0.25f;
-        float horizontalVelocityInfluenceOnJump = 1f;
-        float coyoteTimeSeconds = 0.2f;
+        public float Acceleration { get; init; } = 0.1f;
+        public float MaxSpeed { get; init; } = 0.05f;
+        public float JumpForce { get; init; } = 0.1f;
+        public float Gravity { get; init; } = 0.25f;
+        public float HorizontalVelocityInfluenceOnJump { get; init; } = 1f;
+        public float CoyoteTimeSeconds { get; init; } = 0.2f;
 
         public bool controlling = true;
         public override void Initialize() {
@@ -46,31 +46,31 @@ namespace ShrimpfulAdventure.Components {
 
             bool movementPressed = false;
             if (controlling) {
-                if (timeSinceGrounded < TimeSpan.FromSeconds(coyoteTimeSeconds) && Input.JumpPressed()) {
-                    velocity.Y = jumpForce+MathF.Abs(velocity.X)*horizontalVelocityInfluenceOnJump;
+                if (timeSinceGrounded < TimeSpan.FromSeconds(CoyoteTimeSeconds) && Input.JumpPressed()) {
+                    velocity.Y = JumpForce+MathF.Abs(velocity.X)*HorizontalVelocityInfluenceOnJump;
                 }
 
                 if (Input.LeftPressed()) {
                     movementPressed = true;
-                    velocity.X -= acceleration*deltaTime;
+                    velocity.X -= Acceleration*deltaTime;
                 }
 
                 if (Input.RightPressed()) {
                     movementPressed = true;
-                    velocity.X += acceleration * deltaTime;
+                    velocity.X += Acceleration * deltaTime;
                 }
 
             }
 
 
             if (movementPressed) {
-                velocity.X = MathF.Max(MathF.Min(velocity.X, maxSpeed), -maxSpeed);
+                velocity.X = MathF.Max(MathF.Min(velocity.X, MaxSpeed), -MaxSpeed);
             } else {
-                velocity.X += velocity.X > 0 ? -MathF.Min(velocity.X, acceleration*deltaTime) : -MathF.Max(velocity.X, -acceleration*deltaTime);
+                velocity.X += velocity.X > 0 ? -MathF.Min(velocity.X, Acceleration*deltaTime) : -MathF.Max(velocity.X, -Acceleration*deltaTime);
             }
 
 
-            velocity.Y -= gravity*deltaTime;
+            velocity.Y -= Gravity*deltaTime;
 
             Transform.Position += velocity;
 

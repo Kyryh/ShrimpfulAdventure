@@ -28,7 +28,16 @@ namespace ShrimpfulAdventure.Scenes {
                     new SpriteRenderer() {
                         spriteName = "Sprites/ShrimpTogether"
                     },
-                    new FatherController(),
+                    new FatherController() {
+                        // YAKERI MODIFICA QUESTI!!!!!!!!!!!!!!!!!!!!!!!!!
+                        Acceleration = 0.1f,
+                        MaxSpeed = 0.05f,
+                        JumpForce = 0.1f,
+                        Gravity = 0.25f,
+                        HorizontalVelocityInfluenceOnJump = 1f,
+                        CoyoteTimeSeconds = 0.2f
+                        // BASTA FINITO NON CE' ALTRO
+                    },
                     new BoxCollider() {
                         Width = 7/8f,
                         Height = 7/8f,
@@ -46,7 +55,16 @@ namespace ShrimpfulAdventure.Scenes {
                             new SpriteRenderer() {
                                 spriteName = "Sprites/ShrimpBaby"
                             },
-                            new BabyController(),
+                            new BabyController() {
+                                // SCHERZAVO CI SONO ANCHE QUESTI!!!!!!!!!!!!!!!!!!!!!!!!
+                                Acceleration = 0.1f,
+                                MaxSpeed = 0.05f,
+                                JumpForce = 0.1f,
+                                Gravity = 0.25f,
+                                HorizontalVelocityInfluenceOnJump = 1f,
+                                CoyoteTimeSeconds = 0.2f
+                                // e poi bastya per davvero
+                            },
                             new BoxCollider() {
                                 Width = 7/16f,
                                 Height = 7/16f,
