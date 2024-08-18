@@ -37,6 +37,7 @@ namespace ShrimpfulAdventure.Components {
         }
 
         private void OnCollision(Collider other, Collider.HitInfo hitInfo) {
+            if (other.IsTrigger) return;
             if (hitInfo.direction == GameConstants.Vector2.Down) {
                 velocity.Y = MathF.Max(0,velocity.Y);
                 timeSinceGrounded = TimeSpan.Zero;
