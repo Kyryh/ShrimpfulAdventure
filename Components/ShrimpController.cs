@@ -51,8 +51,7 @@ namespace ShrimpfulAdventure.Components {
             } else {
                 if (hitInfo.direction == GameConstants.Vector2.Left) {
                     velocity.X = MathF.Max(-PushingForce, velocity.X);
-                }
-                else if (hitInfo.direction == GameConstants.Vector2.Right) {
+                } else if (hitInfo.direction == GameConstants.Vector2.Right) {
                     velocity.X = MathF.Min(PushingForce, velocity.X);
                 }
             }
