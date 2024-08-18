@@ -37,8 +37,10 @@ namespace ShrimpfulAdventure.Components {
 
         private void OnCollision(Collider other, Collider.HitInfo hitInfo) {
             if (hitInfo.direction == GameConstants.Vector2.Down) {
-                velocity = new Vector2(velocity.X, MathF.Max(0,velocity.Y));
+                velocity.Y = MathF.Max(0,velocity.Y);
                 timeSinceGrounded = TimeSpan.Zero;
+            } else if (hitInfo.direction == GameConstants.Vector2.Up) {
+                velocity.Y = MathF.Min(0, velocity.Y);
             }
         }
 
