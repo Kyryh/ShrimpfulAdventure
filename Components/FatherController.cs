@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ShrimpfulAdventure.Components {
     internal class FatherController : ShrimpController {
-        ShrimpController baby;
+        BabyController baby;
 
         public override void Initialize() {
             base.Initialize();
-            baby = Transform.children[0].GameObject.GetComponent<ShrimpController>();
+            baby = Transform.children[0].GameObject.GetComponent<BabyController>();
         }
         public override void Update(float deltaTime) {
             if (controlling && Input.InteractPressed()) {
@@ -22,6 +22,7 @@ namespace ShrimpfulAdventure.Components {
         void Switch() {
             controlling = false;
             baby.GameObject.active = true;
+            baby.justSpawned = true;
         }
     }
 }

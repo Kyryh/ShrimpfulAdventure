@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 namespace ShrimpfulAdventure.Components {
     internal class BabyController : ShrimpController {
         ShrimpController father;
+        public bool justSpawned;
         public override void Initialize() {
             father = Transform.Parent.GameObject.GetComponent<ShrimpController>();
 
             base.Initialize();
         }
         public override void Update(float deltaTime) {
-            if (Input.InteractPressed()) {
+            if (!justSpawned && Input.InteractPressed()) {
                 Collider.CheckCollision(collider, out var hitInfoList);
                 foreach (var hitInfo in hitInfoList)
                 {
@@ -24,6 +25,7 @@ namespace ShrimpfulAdventure.Components {
                     }
                 }
             }
+            justSpawned = false;
             base.Update(deltaTime);
         }
 
