@@ -40,6 +40,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/padre.png;Sprites/ShrimpFather.png
 
+#begin Sprites/TileSets.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/TileSets.png;Sprites/tilesets1.png
+
 #begin Sprites/waterberry shrimp.png
 /importer:TextureImporter
 /processor:TextureProcessor
