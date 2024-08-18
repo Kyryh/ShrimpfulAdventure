@@ -23,14 +23,7 @@ namespace ShrimpfulAdventure.Scenes {
             string directory = Path.Combine(Directory.GetCurrentDirectory(), "Content");
             var data = File.ReadAllLines(Path.Combine(directory, "valori.txt"));
 
-            new GameObject(
-                "Map",
-                components: [
-                    new TileMap() {
-                        MapName = "map1"
-                    }
-                ]
-            ).Load();
+            TileMapLoader.Load("Map1", "Sprites/tilesets1");
 
             new GameObject(
                 "Shrimp",
