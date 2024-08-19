@@ -18,35 +18,11 @@ namespace ShrimpfulAdventure.Scenes {
 
             MapLoader.SpawnShrimps(new Vector2(1.5f, -22.5f));
 
-            new GameObject(
-                "Platform",
-                components: [
-                    new BoxCollider() {
-                        IsStatic = true
-                    }
-                ],
-                position: new Vector2(0,-3),
-                scale: new Vector2(10,1)
-            ).Load();
+            MapLoader.SpawnRock(new Vector2(22.5f, -15f));
 
-            new GameObject(
-                "Platform",
-                components: [
-                    new BoxCollider() {
-                        IsStatic = true
-                    }
-                ],
-                position: new Vector2(5, -.5f),
-                scale: new Vector2(5, 1)
-            ).Load();
+            var td = MapLoader.SpawnTrapdoor(new Vector2(16, -13), 1f, false);
 
-            new GameObject(
-                "Cube",
-                components: [
-                    new BoxCollider()
-                ],
-                position: new Vector2(1, -2)
-            ).Load();
+            MapLoader.SpawnLever(new Vector2(24.5f, -15f), td.Open, td.Close);
 
 
         }

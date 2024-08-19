@@ -17,6 +17,7 @@ namespace ShrimpfulAdventure.Components {
         TimeSpan timeSinceGrounded = TimeSpan.Zero;
         internal Vector2 velocity = Vector2.Zero;
 
+        protected bool interacted = false;
         public float GroundAcceleration { get; init; } = 0.1f;
         public float AirAcceleration { get; init; } = 0.1f;
         public float GroundDeceleration { get; init; } = 0.5f;
@@ -84,6 +85,19 @@ namespace ShrimpfulAdventure.Components {
             base.Update(deltaTime);
 
             //Camera.MainCamera.Transform.Position = Transform.GlobalPosition;
+
+            interacted = false;
+            if (controlling && Input.InteractPressed()) {
+                Collider.CheckCollision(collider, out var hitInfoList);
+                foreach (var hitInfo in hitInfoList)
+                {
+                    if (hitInfo.colliderB.GameObject.TryGetComponent<Interactable>(out var interactable)) {
+                        interacted = true;
+                        interactable.Interact();
+                        break;
+                    }
+                }
+            }
 
             int direction = 0;
             if (controlling) {

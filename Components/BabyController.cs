@@ -17,7 +17,8 @@ namespace ShrimpfulAdventure.Components {
             base.Initialize();
         }
         public override void Update(float deltaTime) {
-            if (!justSpawned && Input.InteractPressed()) {
+            base.Update(deltaTime);
+            if (!justSpawned && !interacted && Input.InteractPressed()) {
                 Collider.CheckCollision(collider, out var hitInfoList);
                 foreach (var hitInfo in hitInfoList)
                 {
@@ -28,7 +29,6 @@ namespace ShrimpfulAdventure.Components {
                 }
             }
             justSpawned = false;
-            base.Update(deltaTime);
             Camera.MainCamera.Transform.Position = Transform.GlobalPosition;
         }
 

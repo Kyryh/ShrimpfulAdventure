@@ -169,5 +169,75 @@ namespace ShrimpfulAdventure.Components {
             ).Load();
         }
 
+        
+        public static Trapdoor SpawnTrapdoor(Vector2 position, float rotation, bool isLong) {
+            Trapdoor trapdoor = new Trapdoor() {
+                IsLong = isLong
+            };
+            new GameObject(
+                "Trapdoor",
+                position: position,
+                rotation: rotation,
+                components: [
+                    new BoxCollider() {
+                        Width = .5f,
+                        Height = isLong ? 4f : 2f,
+                        Offset = new Vector2(0, isLong ? 2 : 1),
+                        IsStatic = true
+                    },
+                    new SpriteRenderer() {
+                        spriteName = "Sprites/trapdoor",
+                        spriteIndex = isLong ? 1 : 0
+                    },
+                    trapdoor
+                ]
+            ).Load();
+            return trapdoor;
+        }
+        public static void SpawnLever(Vector2 position, Action leverOn, Action leverOff) {
+            var ac = new AnimationController() {
+                StartingAnimation = "unpulled",
+                Animations = [
+                    new Animation("unpulled",
+                        new Animation.Frame(1, TimeSpan.Zero)
+                    ),
+                    new Animation("pull", "pulled",
+                        new Animation.Frame(0, TimeSpan.FromSeconds(0.2))
+                    ),
+                    new Animation("pulled",
+                        new Animation.Frame(2, TimeSpan.Zero)
+                    ),
+                    new Animation("unpull", "unpulled",
+                        new Animation.Frame(0, TimeSpan.FromSeconds(0.2))
+                    )
+                ]
+            };
+            new GameObject(
+                "Lever",
+                position,
+                components: [
+                    new SpriteRenderer() {
+                        spriteName = "Sprites/lever"
+                    },
+                    new BoxCollider() {
+                        IsTrigger = true
+                    },
+                    ac,
+                    new Interactable() {
+                        OnInteract = (state) => {
+                            if (state == 0) {
+                                leverOn();
+                                ac.SetAnimation("pull");
+                                return 1;
+                            } else {
+                                leverOff();
+                                ac.SetAnimation("unpull");
+                                return 0;
+                            }
+                        }
+                    }
+                ]
+            ).Load();
+        }
     }
 }

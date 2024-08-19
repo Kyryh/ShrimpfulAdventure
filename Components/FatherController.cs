@@ -15,10 +15,10 @@ namespace ShrimpfulAdventure.Components {
             baby = Transform.children[0].GameObject.GetComponent<BabyController>();
         }
         public override void Update(float deltaTime) {
-            if (controlling && Input.InteractPressed()) {
+            base.Update(deltaTime);
+            if (controlling && !interacted && Input.InteractPressed()) {
                 Switch();
             }
-            base.Update(deltaTime);
         }
 
         void Switch() {
