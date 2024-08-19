@@ -13,12 +13,12 @@ namespace ShrimpfulAdventure.Components {
     internal class TileMapRenderer : DrawableComponent {
         SpriteSheet spriteSheet;
         Tile[] tiles;
-        public static TileMapRenderer FromMap(byte[,,] map, SpriteSheet tilesSheet) {
+        public static TileMapRenderer FromMap(byte[,] map, SpriteSheet tilesSheet) {
             List<Tile> tiles = new();
             var renderer = new TileMapRenderer();
             renderer.spriteSheet = tilesSheet;
-            for (int i = -1; i < map.GetLength(1); i++) {
-                for (int j = -1; j < map.GetLength(2); j++) {
+            for (int i = -1; i < map.GetLength(0); i++) {
+                for (int j = -1; j < map.GetLength(1); j++) {
                     byte topLeft = GetTile(map, j, i);
                     byte topRight = GetTile(map, j+1, i);
                     byte bottomLeft = GetTile(map, j, i+1);
@@ -49,11 +49,11 @@ namespace ShrimpfulAdventure.Components {
             }
         }
 
-        static byte GetTile(byte[,,] map, int x, int y) {
-            if (x < 0 || x >= map.GetLength(2) || y < 0 || y >= map.GetLength(1)) {
+        static byte GetTile(byte[,] map, int x, int y) {
+            if (x < 0 || x >= map.GetLength(1) || y < 0 || y >= map.GetLength(0)) {
                 return 0;
             }
-            return map[2, y, x];
+            return map[y, x];
         }
 
         record Tile(int Index, Vector2 Position);

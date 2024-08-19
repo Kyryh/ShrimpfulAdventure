@@ -16,7 +16,7 @@ namespace ShrimpfulAdventure.Components {
 
         static readonly string mapDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Content", "Maps");
         public static void Load(string mapName, string tileSheet) {
-            byte[,,] map = LoadMap(mapName + ".txt");
+            byte[,] map = LoadMap(mapName + ".txt");
 
             var texture = KGame.GetContent<Texture2D>("Sprites/white");
 
@@ -38,12 +38,12 @@ namespace ShrimpfulAdventure.Components {
             //}
         }
 
-        static List<Component> CalculateColliders(byte[,,] map) {
+        static List<Component> CalculateColliders(byte[,] map) {
             var result = new List<Component>();
-            for (int i = 0; i < map.GetLength(1); i++) {
-                for (int j = 0; j < map.GetLength(2); j++) {
+            for (int i = 0; i < map.GetLength(0); i++) {
+                for (int j = 0; j < map.GetLength(1); j++) {
                     //Camera.MainCamera.Draw(spriteBatch, texture, new Vector2(k, -j), null, GetColor(map[i, j, k]), 0f, new Vector2(0.5f, 0.5f), Vector2.One, SpriteEffects.None, 0f);
-                    if (map[2, i, j] != 0) {
+                    if (map[i, j] != 0) {
                         result.Add(new BoxCollider() {
                             Offset = new Vector2(j, -i),
                             IsStatic = true
@@ -54,21 +54,18 @@ namespace ShrimpfulAdventure.Components {
             return result;
         }
 
-        static byte[,,] LoadMap(string fileName) {
+        static byte[,] LoadMap(string fileName) {
             var mapData = File.ReadAllLines(Path.Combine(mapDirectory, fileName));
             var mapWidth = int.Parse(mapData[0]);
             var mapHeight = int.Parse(mapData[1]);
-            var mapLayers = int.Parse(mapData[2]);
 
-            var map = new byte[mapLayers, mapHeight, mapWidth];
+            var map = new byte[mapHeight, mapWidth];
 
-            for (int i = 0; i < mapLayers; i++) {
-                for (int j = 0; j < mapHeight; j++) {
-                    var row = mapData[3 + i * mapHeight + j];
-                    for (int k = 0; k < mapWidth; k++) {
-                        var tile = byte.Parse(row[(k * 4)..(k * 4 + 3)]);
-                        map[i, j, k] = tile;
-                    }
+            for (int j = 0; j < mapHeight; j++) {
+                var row = mapData[2 + j];
+                for (int k = 0; k < mapWidth; k++) {
+                    var tile = byte.Parse(row[(k * 4)..(k * 4 + 3)]);
+                    map[j, k] = tile;
                 }
             }
             return map;
