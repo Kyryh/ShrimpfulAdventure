@@ -13,8 +13,8 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Maps/map1.txt
-/copy:Maps/map1.txt
+#begin Maps/1-1.txt
+/copy:Maps/1-1.txt
 
 #begin Sprites/family.png
 /importer:TextureImporter
