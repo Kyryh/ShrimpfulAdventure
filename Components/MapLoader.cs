@@ -18,8 +18,6 @@ namespace ShrimpfulAdventure.Components {
         public static void LoadMap(string mapName, string tileSheet) {
             byte[,] map = LoadMap(mapName + ".txt");
 
-            var texture = KGame.GetContent<Texture2D>("Sprites/white");
-
             List<Component> components = CalculateColliders(map);
 
             components.Add(TileMapRenderer.FromMap(map, (SpriteSheet)KGame.GetSprite(tileSheet)));
@@ -28,21 +26,12 @@ namespace ShrimpfulAdventure.Components {
                 components.ToArray()
             ).Load();
 
-            //for (int i = map.GetLength(0) - 1; i >= 0; i--) {
-            //    for (int j = 0; j < map.GetLength(1); j++) {
-            //        for (int k = 0; k < map.GetLength(2); k++) {
-            //            //Camera.MainCamera.Draw(spriteBatch, texture, new Vector2(k, -j), null, GetColor(map[i, j, k]), 0f, new Vector2(0.5f, 0.5f), Vector2.One, SpriteEffects.None, 0f);
-                        
-            //        }
-            //    }
-            //}
         }
 
         static List<Component> CalculateColliders(byte[,] map) {
             var result = new List<Component>();
             for (int i = 0; i < map.GetLength(0); i++) {
                 for (int j = 0; j < map.GetLength(1); j++) {
-                    //Camera.MainCamera.Draw(spriteBatch, texture, new Vector2(k, -j), null, GetColor(map[i, j, k]), 0f, new Vector2(0.5f, 0.5f), Vector2.One, SpriteEffects.None, 0f);
                     if (map[i, j] != 0) {
                         result.Add(new BoxCollider() {
                             Offset = new Vector2(j, -i),
@@ -70,5 +59,7 @@ namespace ShrimpfulAdventure.Components {
             }
             return map;
         }
+
+
     }
 }
