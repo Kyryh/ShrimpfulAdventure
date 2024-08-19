@@ -13,13 +13,14 @@ using ShrimpfulAdventure.Scenes;
 
 namespace ShrimpfulAdventure {
     public class ShrimpfulGame : KGame {
-        
+        public static float Time { private set; get; }
         public ShrimpfulGame() {
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             drawingLayers = [
                 "Background",
-                "Default"
+                "Bubbles",
+                "Default",
             ];
             debugDrawGameObjectsPosition = true;
             debugDrawColliders = true;
@@ -52,7 +53,8 @@ namespace ShrimpfulAdventure {
                 new SpriteSheet("Sprites/trapdoor", 3, 1, false, scale: new Vector2(0.125f), offset: new Vector2(0.5f,1)),
                 new SpriteSheet("Sprites/lever", 3, 1, offset: new Vector2(0.5f)),
                 new SpriteSheet("Sprites/button", 2, 1, false, new Vector2(0.5f,0.5f), new Vector2(0.125f)),
-                new Sprite("Sprites/background1", false, offset: new Vector2(-.4875f, -.5f), scale: new Vector2(0.125f))
+                new Sprite("Sprites/background1", false, offset: new Vector2(-.4875f, -.5f), scale: new Vector2(0.125f)),
+                new Sprite("Sprites/bubbles", true, scale: new(0.5f))
             );
 
             SetScenes(
@@ -63,6 +65,12 @@ namespace ShrimpfulAdventure {
         protected override void Update(GameTime gameTime) {
             //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             //    Exit();
+            Time = (float)gameTime.TotalGameTime.TotalSeconds;
+
+            var mstate = Mouse.GetState();
+
+            var pos = Camera.MainCamera.ScreenToWorld(new Vector2(mstate.X, mstate.Y));
+            Console.WriteLine(new Vector2(MathF.Round(pos.X), MathF.Round(pos.Y)));
 
             Input.Update();
 
