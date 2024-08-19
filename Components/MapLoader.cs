@@ -152,6 +152,22 @@ namespace ShrimpfulAdventure.Components {
             ).Load();
         }
 
+        public static void SpawnRock(Vector2 position) {
+
+            new GameObject(
+                "Rock",
+                components: [
+                    new BoxCollider() {
+                        Width = 2f,
+                        Height = 2f
+                    },
+                    new SpriteRenderer() {
+                        spriteName = "Sprites/rock"
+                    }
+                ],
+                position: position
+            ).Load();
+        }
 
     }
 }
