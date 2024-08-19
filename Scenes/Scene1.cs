@@ -52,12 +52,14 @@ namespace ShrimpfulAdventure.Scenes {
                         PushingForce =GetValue(data[10])
                     },
                     new BoxCollider() {
-                        Width = 7/8f,
-                        Height = 7/8f,
+                        Width = 7/4f,
+                        Height = 7/4f,
                         Layer = "ShrimpFather"
                     },
                     new BoxCollider() {
                         IsTrigger = true,
+                        Width = 2f,
+                        Height = 2f,
                         Layer = "BabyFatherInteraction"
                     }
                 ],
@@ -90,8 +92,8 @@ namespace ShrimpfulAdventure.Scenes {
                                 PushingForce =GetValue(data[22])
                             },
                             new BoxCollider() {
-                                Width = 7/16f,
-                                Height = 7/16f,
+                                Width = 7/8f,
+                                Height = 7/8f,
                                 Layer = "ShrimpBaby"
                             }
                         ],

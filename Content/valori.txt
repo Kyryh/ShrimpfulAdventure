@@ -1,23 +1,23 @@
 ﻿FATHER
-GroundAcceleration = 0,1
-AirAcceleration = 0,1
-GroundDeceleration = 0,2
-AirDeceleration = 0,2
-MaxSpeed = 0,05
-JumpForce = 0,14
-Gravity = 0,25
+GroundAcceleration = 0,2
+AirAcceleration = 0,2
+GroundDeceleration = 0,4
+AirDeceleration = 0,4
+MaxSpeed = 0,1
+JumpForce = 0,25
+Gravity = 0,5
 HorizontalVelocityInfluenceOnJump = 1
 CoyoteTimeSeconds = 0,2
-PushingForce = 0,03
+PushingForce = 0,06
 
 BABY
-GroundAcceleration = 0,1
-AirAcceleration = 0,1
-GroundDeceleration = 0,2
-AirDeceleration = 0,2
-MaxSpeed = 0,08
-JumpForce = 0,1
-Gravity = 0,25
+GroundAcceleration = 0,2
+AirAcceleration = 0,2
+GroundDeceleration = 0,4
+AirDeceleration = 0,4
+MaxSpeed = 0,15
+JumpForce = 0,2
+Gravity = 0,5
 HorizontalVelocityInfluenceOnJump = 1
 CoyoteTimeSeconds = 0,2
 PushingForce = -0,005
