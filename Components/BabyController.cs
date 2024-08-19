@@ -29,9 +29,7 @@ namespace ShrimpfulAdventure.Components {
             }
             justSpawned = false;
             base.Update(deltaTime);
-            if (controlling) {
-                Camera.MainCamera.Transform.Position = Transform.GlobalPosition;
-            }
+            Camera.MainCamera.Transform.Position = Transform.GlobalPosition;
         }
 
         void Switch() {
