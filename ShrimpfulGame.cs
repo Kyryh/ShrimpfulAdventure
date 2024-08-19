@@ -46,7 +46,10 @@ namespace ShrimpfulAdventure {
             InitSprites(
                 new SpriteSheet("Sprites/ShrimpTogether", new Vector2(16,25), false, scale: new Vector2(1/8f), offset: new Vector2(0, 11/64f)),
                 new SpriteSheet("Sprites/ShrimpBaby", new Vector2(8,16), false, scale: new Vector2(1/8f), offset: new Vector2(0, 7 / 32f)),
-                new SpriteSheet("Sprites/tilesets1", new Vector2(8))
+                new SpriteSheet("Sprites/tilesets1", new Vector2(8)),
+                new Sprite("Sprites/rock", scale: new Vector2(2)),
+                new SpriteSheet("Sprites/trapdoor", 3, 1, false, scale: new Vector2(0.125f), offset: new Vector2(0.5f,1)),
+                new SpriteSheet("Sprites/lever", 3, 1, offset: new Vector2(0.5f))
             );
 
             SetScenes(
