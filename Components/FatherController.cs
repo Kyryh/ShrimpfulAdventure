@@ -25,6 +25,7 @@ namespace ShrimpfulAdventure.Components {
             controlling = false;
             baby.GameObject.active = true;
             baby.justSpawned = true;
+            baby.velocity = velocity;
             baby.UpdateCamera();
         }
 

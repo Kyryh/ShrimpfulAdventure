@@ -15,7 +15,7 @@ namespace ShrimpfulAdventure.Components {
         AnimationController ac;
         protected Collider collider;
         TimeSpan timeSinceGrounded = TimeSpan.Zero;
-        protected Vector2 velocity = Vector2.Zero;
+        internal Vector2 velocity = Vector2.Zero;
 
         public float GroundAcceleration { get; init; } = 0.1f;
         public float AirAcceleration { get; init; } = 0.1f;
