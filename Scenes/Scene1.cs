@@ -16,7 +16,7 @@ namespace ShrimpfulAdventure.Scenes {
 
             MapLoader.LoadMap("1-1", "Sprites/tilesets1");
 
-            MapLoader.LoadShrimps(new Vector2(1.5f, -22.5f));
+            MapLoader.SpawnShrimps(new Vector2(1.5f, -22.5f));
 
             new GameObject(
                 "Platform",

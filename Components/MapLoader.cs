@@ -67,7 +67,7 @@ namespace ShrimpfulAdventure.Components {
             return map;
         }
 
-        public static void LoadShrimps(Vector2 position) {
+        public static void SpawnShrimps(Vector2 position) {
 
             string directory = Path.Combine(Directory.GetCurrentDirectory(), "Content");
             var data = File.ReadAllLines(Path.Combine(directory, "valori.txt"));
@@ -151,5 +151,7 @@ namespace ShrimpfulAdventure.Components {
                 ]
             ).Load();
         }
+
+
     }
 }
