@@ -58,7 +58,7 @@ namespace ShrimpfulAdventure {
             );
 
             SetScenes(
-                ("Scene1", Scene1.Load)
+                ("1-1", Scene1.Load)
             );
         }
 
