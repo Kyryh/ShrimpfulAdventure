@@ -274,7 +274,11 @@ namespace ShrimpfulAdventure.Components {
                         Offset = new Vector2(0, length/2f),
                         IsTrigger = true
                     },
-                    new Current()
+                    new Current() {
+                        drawingLayer = "Bubbles",
+                        Length = length,
+                        Width = width
+                    }
                 ]
             ).Load();
         }
