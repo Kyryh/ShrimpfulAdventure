@@ -220,7 +220,8 @@ namespace ShrimpfulAdventure.Components {
                         spriteName = "Sprites/lever"
                     },
                     new BoxCollider() {
-                        IsTrigger = true
+                        IsTrigger = true,
+                        Width = 1.5f
                     },
                     ac,
                     new Interactable() {
@@ -235,6 +236,56 @@ namespace ShrimpfulAdventure.Components {
                                 return 0;
                             }
                         }
+                    }
+                ]
+            ).Load();
+        }
+
+        public static void SpawnButton(Vector2 position, Action onPress, Action onDepress) {
+            new GameObject(
+                "Button",
+                position,
+                components: [
+                    new SpriteRenderer() {
+                        spriteName = "Sprites/button"
+                    },
+                    new BoxCollider() {
+                        Width=2f,
+                        Height=0.5f,
+                        IsTrigger = true
+                    },
+                    new Button() {
+                        OnPress = onPress,
+                        OnDepress = onDepress
+                    }
+                ]
+            ).Load();
+        }
+
+        public static void SpawnCurrent(Vector2 position, int length, int width, float rotation) {
+            new GameObject(
+                "Current",
+                position,
+                rotation,
+                components: [
+                    new BoxCollider() {
+                        Width = width,
+                        Height = length,
+                        Offset = new Vector2(0, length/2f),
+                        IsTrigger = true
+                    },
+                    new Current()
+                ]
+            ).Load();
+        }
+
+        public static void CreateBackground(string backgroundName) {
+            new GameObject(
+                "Background",
+                components: [
+                    new SpriteRenderer() {
+                        drawingLayer = "Background",
+                        spriteName = backgroundName
                     }
                 ]
             ).Load();

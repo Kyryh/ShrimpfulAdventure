@@ -18,6 +18,7 @@ namespace ShrimpfulAdventure {
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             drawingLayers = [
+                "Background",
                 "Default"
             ];
             debugDrawGameObjectsPosition = true;
@@ -49,7 +50,9 @@ namespace ShrimpfulAdventure {
                 new SpriteSheet("Sprites/tilesets1", new Vector2(8)),
                 new Sprite("Sprites/rock", scale: new Vector2(2)),
                 new SpriteSheet("Sprites/trapdoor", 3, 1, false, scale: new Vector2(0.125f), offset: new Vector2(0.5f,1)),
-                new SpriteSheet("Sprites/lever", 3, 1, offset: new Vector2(0.5f))
+                new SpriteSheet("Sprites/lever", 3, 1, offset: new Vector2(0.5f)),
+                new SpriteSheet("Sprites/button", 2, 1, false, new Vector2(0.5f,0.5f), new Vector2(0.125f)),
+                new Sprite("Sprites/background1", false, offset: new Vector2(-.4875f, -.5f), scale: new Vector2(0.125f))
             );
 
             SetScenes(

@@ -29,7 +29,7 @@ namespace ShrimpfulAdventure.Components {
                 }
             }
             justSpawned = false;
-            Camera.MainCamera.Transform.Position = Transform.GlobalPosition;
+            Camera.MainCamera.Transform.Position = GetCameraPosition();
         }
 
         void Switch() {
@@ -40,9 +40,16 @@ namespace ShrimpfulAdventure.Components {
             father.UpdateCamera();
         }
 
+        Vector2 GetCameraPosition() {
+            var position = Transform.GlobalPosition;
+            position.X = MathF.Min(MathF.Max(position.X, 12), 29);
+            position.Y = MathF.Min(MathF.Max(position.Y, -18), -7);
+            return position;
+        }
         internal override void UpdateCamera() {
             base.UpdateCamera();
             Camera.MainCamera.Size = 25f;
+            Camera.MainCamera.Transform.Position = GetCameraPosition();
         }
     }
 }
