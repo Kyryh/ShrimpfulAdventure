@@ -106,16 +106,20 @@ namespace ShrimpfulAdventure.Components {
                     velocity.Y = JumpForce;
                 }
 
-                if (Input.LeftPressed())
-                    direction--;
-                if (Input.RightPressed())
-                    direction++;
+                if (MathF.Abs(velocity.X) > MaxSpeed) {
+                    direction = -MathF.Sign(velocity.X);
+                } else {
+                    if (Input.LeftPressed())
+                        direction--;
+                    if (Input.RightPressed())
+                        direction++;
+                }
 
 
             }
 
             velocity.X += GetMovement(direction, deltaTime);
-            velocity.X = MathF.Max(MathF.Min(velocity.X, MaxSpeed), -MaxSpeed);
+            //velocity.X = MathF.Max(MathF.Min(velocity.X, MaxSpeed), -MaxSpeed);
 
 
 
