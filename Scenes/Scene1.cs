@@ -48,7 +48,6 @@ namespace ShrimpfulAdventure.Scenes {
                         MaxSpeed = GetValue(data[5]),
                         JumpForce = GetValue(data[6]),
                         Gravity = GetValue(data[7]),
-                        HorizontalVelocityInfluenceOnJump = GetValue(data[8]),
                         CoyoteTimeSeconds = GetValue(data[9]),
                         PushingForce =GetValue(data[10])
                     },
@@ -87,7 +86,6 @@ namespace ShrimpfulAdventure.Scenes {
                                 MaxSpeed = GetValue(data[17]),
                                 JumpForce = GetValue(data[18]),
                                 Gravity = GetValue(data[19]),
-                                HorizontalVelocityInfluenceOnJump = GetValue(data[20]),
                                 CoyoteTimeSeconds = GetValue(data[21]),
                                 PushingForce =GetValue(data[22])
                             },

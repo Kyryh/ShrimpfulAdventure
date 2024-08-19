@@ -24,7 +24,6 @@ namespace ShrimpfulAdventure.Components {
         public float MaxSpeed { get; init; } = 0.05f;
         public float JumpForce { get; init; } = 0.1f;
         public float Gravity { get; init; } = 0.25f;
-        public float HorizontalVelocityInfluenceOnJump { get; init; } = 1f;
         public float CoyoteTimeSeconds { get; init; } = 0.2f;
         public float PushingForce { get; init; } = 0.02f;
 
@@ -83,7 +82,7 @@ namespace ShrimpfulAdventure.Components {
             if (controlling) {
                 if (timeSinceGrounded < TimeSpan.FromSeconds(CoyoteTimeSeconds) && Input.JumpPressed()) {
                     timeSinceGrounded += TimeSpan.FromSeconds(0.2f);
-                    velocity.Y = JumpForce+MathF.Abs(velocity.X)*HorizontalVelocityInfluenceOnJump;
+                    velocity.Y = JumpForce;
                 }
 
                 if (Input.LeftPressed())
