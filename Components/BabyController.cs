@@ -44,7 +44,7 @@ namespace ShrimpfulAdventure.Components {
 
         internal override void UpdateCamera() {
             base.UpdateCamera();
-            Camera.MainCamera.Size = 21f;
+            Camera.MainCamera.Size = 25f;
         }
     }
 }
