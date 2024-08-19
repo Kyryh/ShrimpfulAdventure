@@ -47,6 +47,23 @@ namespace ShrimpfulAdventure.Components {
                     }
                 }
             }
+            result.AddRange([
+                new BoxCollider() {
+                    Height = 26,
+                    IsStatic = true,
+                    Offset = new Vector2(-1,-12.5f)
+                },
+                new BoxCollider() {
+                    Height = 26,
+                    IsStatic = true,
+                    Offset = new Vector2(42,-12.5f)
+                },
+                new BoxCollider() {
+                    Width = 42,
+                    IsStatic = true,
+                    Offset = new Vector2(20.5f,1)
+                },
+            ]);
             return result;
         }
 
