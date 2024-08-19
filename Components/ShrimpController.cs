@@ -35,6 +35,11 @@ namespace ShrimpfulAdventure.Components {
             collider.OnCollision += OnCollision;
         }
 
+        public override void Start() {
+            base.Start();
+            UpdateCamera();
+        }
+
         private void OnCollision(Collider other, Collider.HitInfo hitInfo) {
             if (other.IsTrigger) return;
             if (hitInfo.direction == GameConstants.Vector2.Down) {
@@ -78,6 +83,8 @@ namespace ShrimpfulAdventure.Components {
         public override void Update(float deltaTime) {
             base.Update(deltaTime);
 
+            //Camera.MainCamera.Transform.Position = Transform.GlobalPosition;
+
             int direction = 0;
             if (controlling) {
                 if (timeSinceGrounded < TimeSpan.FromSeconds(CoyoteTimeSeconds) && Input.JumpPressed()) {
@@ -103,6 +110,10 @@ namespace ShrimpfulAdventure.Components {
             Transform.Position += velocity;
 
             timeSinceGrounded += TimeSpan.FromSeconds(deltaTime);
+        }
+
+        internal virtual void UpdateCamera() {
+
         }
     }
 }

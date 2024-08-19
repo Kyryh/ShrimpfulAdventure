@@ -1,4 +1,5 @@
-﻿using KEngine.Components.Colliders;
+﻿using KEngine.Components;
+using KEngine.Components.Colliders;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -22,11 +23,15 @@ namespace ShrimpfulAdventure.Components {
                 {
                     if (hitInfo.colliderB.GameObject.TryGetComponent<ShrimpController>(out var _)) {
                         Switch();
+                        return;
                     }
                 }
             }
             justSpawned = false;
             base.Update(deltaTime);
+            if (controlling) {
+                Camera.MainCamera.Transform.Position = Transform.GlobalPosition;
+            }
         }
 
         void Switch() {
@@ -34,6 +39,12 @@ namespace ShrimpfulAdventure.Components {
             Transform.Position = Vector2.Zero;
             velocity = Vector2.Zero;
             father.controlling = true;
+            father.UpdateCamera();
+        }
+
+        internal override void UpdateCamera() {
+            base.UpdateCamera();
+            Camera.MainCamera.Size = 21f;
         }
     }
 }

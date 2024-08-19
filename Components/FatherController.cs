@@ -1,4 +1,6 @@
-﻿using System;
+﻿using KEngine.Components;
+using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,13 @@ namespace ShrimpfulAdventure.Components {
             controlling = false;
             baby.GameObject.active = true;
             baby.justSpawned = true;
+            baby.UpdateCamera();
+        }
+
+        internal override void UpdateCamera() {
+            base.UpdateCamera();
+            Camera.MainCamera.Size = 42f;
+            Camera.MainCamera.Transform.Position = new Vector2(20.5f, -12.5f);
         }
     }
 }
