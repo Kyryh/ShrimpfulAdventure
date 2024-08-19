@@ -18,7 +18,7 @@ namespace ShrimpfulAdventure.Scenes {
         }
         public static void Load() {
 
-            //TileMapLoader.Load("Map1", "Sprites/tilesets1");
+            MapLoader.LoadMap("1-1", "Sprites/tilesets1");
 
             string directory = Path.Combine(Directory.GetCurrentDirectory(), "Content");
             var data = File.ReadAllLines(Path.Combine(directory, "valori.txt"));

@@ -12,10 +12,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ShrimpfulAdventure.Components {
-    internal static class TileMapLoader {
+    internal static class MapLoader {
 
         static readonly string mapDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Content", "Maps");
-        public static void Load(string mapName, string tileSheet) {
+        public static void LoadMap(string mapName, string tileSheet) {
             byte[,] map = LoadMap(mapName + ".txt");
 
             var texture = KGame.GetContent<Texture2D>("Sprites/white");
