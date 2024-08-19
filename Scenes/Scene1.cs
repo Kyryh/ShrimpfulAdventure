@@ -12,9 +12,17 @@ using System.Threading.Tasks;
 
 namespace ShrimpfulAdventure.Scenes {
     internal class Scene1 {
+        static float GetValue(string str) {
+            var p = str.Split(" ")[^1];
+            return float.Parse(p);
+        }
         public static void Load() {
 
-            TileMapLoader.Load("Map1", "Sprites/tilesets1");
+            //TileMapLoader.Load("Map1", "Sprites/tilesets1");
+
+            string directory = Path.Combine(Directory.GetCurrentDirectory(), "Content");
+            var data = File.ReadAllLines(Path.Combine(directory, "valori.txt"));
+
 
             new GameObject(
                 "Shrimp",
@@ -23,15 +31,26 @@ namespace ShrimpfulAdventure.Scenes {
                         spriteName = "Sprites/ShrimpTogether"
                     },
                     new FatherController() {
-                        GroundAcceleration = 0.1f,
-                        AirAcceleration = 0.1f,
-                        GroundDeceleration = 0.1f,
-                        AirDeceleration = 0.1f,
-                        MaxSpeed = 0.05f,
-                        JumpForce = 0.1f,
-                        Gravity = 0.25f,
-                        HorizontalVelocityInfluenceOnJump = 1f,
-                        CoyoteTimeSeconds = 0.2f
+                        //GroundAcceleration = 0.1f,
+                        //AirAcceleration = 0.1f,
+                        //GroundDeceleration = 0.1f,
+                        //AirDeceleration = 0.1f,
+                        //MaxSpeed = 0.05f,
+                        //JumpForce = 0.1f,
+                        //Gravity = 0.25f,
+                        //HorizontalVelocityInfluenceOnJump = 1f,
+                        //CoyoteTimeSeconds = 0.2f,
+                        //PushingForce = 0.02f
+                        GroundAcceleration = GetValue(data[1]),
+                        AirAcceleration = GetValue(data[2]),
+                        GroundDeceleration = GetValue(data[3]),
+                        AirDeceleration = GetValue(data[4]),
+                        MaxSpeed = GetValue(data[5]),
+                        JumpForce = GetValue(data[6]),
+                        Gravity = GetValue(data[7]),
+                        HorizontalVelocityInfluenceOnJump = GetValue(data[8]),
+                        CoyoteTimeSeconds = GetValue(data[9]),
+                        PushingForce =GetValue(data[10])
                     },
                     new BoxCollider() {
                         Width = 7/8f,
@@ -51,16 +70,26 @@ namespace ShrimpfulAdventure.Scenes {
                                 spriteName = "Sprites/ShrimpBaby"
                             },
                             new BabyController() {
-                                GroundAcceleration = 0.1f,
-                                AirAcceleration = 0.1f,
-                                GroundDeceleration = 0.1f,
-                                AirDeceleration = 0.1f,
-                                MaxSpeed = 0.05f,
-                                JumpForce = 0.1f,
-                                Gravity = 0.25f,
-                                HorizontalVelocityInfluenceOnJump = 1f,
-                                CoyoteTimeSeconds = 0.2f,
-                                PushingForce = -.005f
+                                //GroundAcceleration = 0.1f,
+                                //AirAcceleration = 0.1f,
+                                //GroundDeceleration = 0.1f,
+                                //AirDeceleration = 0.1f,
+                                //MaxSpeed = 0.05f,
+                                //JumpForce = 0.1f,
+                                //Gravity = 0.25f,
+                                //HorizontalVelocityInfluenceOnJump = 1f,
+                                //CoyoteTimeSeconds = 0.2f,
+                                //PushingForce = -.005f
+                                GroundAcceleration = GetValue(data[13]),
+                                AirAcceleration = GetValue(data[14]),
+                                GroundDeceleration = GetValue(data[15]),
+                                AirDeceleration = GetValue(data[16]),
+                                MaxSpeed = GetValue(data[17]),
+                                JumpForce = GetValue(data[18]),
+                                Gravity = GetValue(data[19]),
+                                HorizontalVelocityInfluenceOnJump = GetValue(data[20]),
+                                CoyoteTimeSeconds = GetValue(data[21]),
+                                PushingForce =GetValue(data[22])
                             },
                             new BoxCollider() {
                                 Width = 7/16f,
