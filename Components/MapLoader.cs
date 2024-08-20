@@ -317,7 +317,8 @@ namespace ShrimpfulAdventure.Components {
         public static void AddEndTrigger(string nextLevel, Vector2 position, Vector2 dimension) {
             var collider = new BoxCollider() {
                 Width = dimension.X,
-                Height = dimension.Y
+                Height = dimension.Y,
+                IsTrigger = true
             };
             collider.OnCollision += (other, _) => {
                 if (other.GameObject.Name == "Shrimp") {
