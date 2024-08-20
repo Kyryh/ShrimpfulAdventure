@@ -31,7 +31,8 @@ namespace ShrimpfulAdventure.Components {
                 }
             }
             justSpawned = false;
-            Camera.MainCamera.Transform.Position = GetCameraPosition();
+            
+            Camera.MainCamera.Transform.Position = Vector2.Lerp(Camera.MainCamera.Transform.Position, GetCameraPosition(), .1f);
         }
 
         protected override void Jump() {

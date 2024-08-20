@@ -184,7 +184,7 @@ namespace ShrimpfulAdventure.Components {
                                 Gravity = 0.4f,
                                 CoyoteTimeSeconds = 0.2f,
                                 PushingForce = -0.005f,
-                                LittleJumpForce = 0.05f
+                                LittleJumpForce = 0.03f
                             },
                             new BoxCollider() {
                                 Width = 7/8f,

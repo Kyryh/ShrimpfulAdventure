@@ -60,13 +60,13 @@ namespace ShrimpfulAdventure {
                 new Sprite("Sprites/castle", false, scale: new Vector2(0.125f)),
                 new Sprite("Sprites/background2-3", false, scale: new Vector2(0.125f)),
                 new Sprite("Sprites/bubbles", true, scale: new(0.5f)),
-                new SpriteSheet("Sprites/treasure", 2,1, false, scale: new(0.125f), offset: new Vector2(0.5f)),
+                new SpriteSheet("Sprites/treasure", 2,1, false, scale: new(0.125f), offset: new Vector2(0.5f, 0.6f)),
                 new Sprite("Sprites/intro", false, scale: new(1/33f)),
                 new Sprite("Sprites/outro", false, scale: new(1/33f))
             );
 
             SetScenes(
-                ("End", Outro.Load),
+                ("3-3", Level3_3.Load),
                 ("Intro", Intro.Load),
                 ("1-1", Level1_1.Load),
                 ("1-2", Level1_2.Load),
@@ -76,7 +76,7 @@ namespace ShrimpfulAdventure {
                 ("2-3", Level2_3.Load),
                 ("3-1", Level3_1.Load),
                 ("3-2", Level3_2.Load),
-                ("3-3", Level3_3.Load)
+                ("End", Outro.Load)
             );
         }
 
@@ -85,12 +85,11 @@ namespace ShrimpfulAdventure {
             //    Exit();
             Time = (float)gameTime.TotalGameTime.TotalSeconds;
 
-            var mstate = Mouse.GetState();
-
-            var pos = Camera.MainCamera.ScreenToWorld(new Vector2(mstate.X, mstate.Y));
-            Console.WriteLine(new Vector2(MathF.Round(pos.X*4)/4, MathF.Round(pos.Y*4)/4));
-
+            
             Input.Update();
+
+            if (Input.RestartPressed())
+                KGame.Instance.ReloadScene();
 
             base.Update(gameTime);
         }
