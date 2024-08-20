@@ -40,6 +40,42 @@
 #begin Maps/3-3.txt
 /copy:Maps/3-3.txt
 
+#begin Music/IntroOutro.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Music/IntroOutro.mp3
+
+#begin Music/World12.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Music/World12.mp3
+
+#begin Music/World3.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Music/World3.mp3
+
+#begin Sound/jumpBaby.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/jumpBaby.wav
+
+#begin Sound/jumpFather.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/jumpFather.wav
+
+#begin Sound/lever.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/lever.wav
+
 #begin Sprites/background1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -148,6 +184,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/family.png;Sprites/ShrimpTogether.png
 
+#begin Sprites/intro.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/intro.png
+
 #begin Sprites/lever.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -160,7 +208,7 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/lever.png
 
-#begin Sprites/padre.png
+#begin Sprites/outro.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -170,7 +218,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/padre.png;Sprites/ShrimpFather.png
+/build:Sprites/outro.png
 
 #begin Sprites/rock.png
 /importer:TextureImporter

@@ -2,6 +2,7 @@
 using KEngine.Components.Colliders;
 using KEngine.Components.DrawableComponents;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Media;
 using ShrimpfulAdventure.Components;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,10 @@ using System.Threading.Tasks;
 namespace ShrimpfulAdventure.Scenes {
     internal class Level1_1 {
         public static void Load() {
+
+
+            MediaPlayer.Play(KGame.GetContent<Song>("Music/World12"));
+            MediaPlayer.IsRepeating = true;
 
             MapLoader.LoadMap("1-1", "Sprites/tilesets1");
 

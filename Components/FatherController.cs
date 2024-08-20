@@ -1,8 +1,12 @@
-﻿using KEngine.Components;
+﻿using KEngine;
+using KEngine.Components;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,7 +25,13 @@ namespace ShrimpfulAdventure.Components {
             }
         }
 
+        protected override void Jump() {
+            base.Jump();
+            ac.SetAnimation("Jump", true);
+            KGame.GetContent<SoundEffect>("Sound/jumpFather").Play(0.2f, (float)new Random().NextDouble()*0.4f-0.5f, 0);
+        }
         void Switch() {
+            ac.SetAnimation("Childless");
             controlling = false;
             baby.GameObject.active = true;
             baby.justSpawned = true;

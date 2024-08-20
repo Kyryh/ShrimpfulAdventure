@@ -1,4 +1,6 @@
-﻿using KEngine.Components;
+﻿using KEngine;
+using KEngine.Components;
+using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,7 @@ namespace ShrimpfulAdventure.Components {
         int state = 0;
         public void Interact() {
             state = OnInteract.Invoke(state);
+            KGame.GetContent<SoundEffect>("Sound/lever").Play(0.2f, (float)new Random().NextDouble() * 0.4f - 0.5f, 0);
         }
     }
 }

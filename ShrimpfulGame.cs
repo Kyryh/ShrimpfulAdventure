@@ -22,8 +22,8 @@ namespace ShrimpfulAdventure {
                 "Bubbles",
                 "Default",
             ];
-            debugDrawGameObjectsPosition = true;
-            debugDrawColliders = true;
+            //debugDrawGameObjectsPosition = true;
+            //debugDrawColliders = true;
         }
 
         public static void Main() {
@@ -60,10 +60,14 @@ namespace ShrimpfulAdventure {
                 new Sprite("Sprites/castle", false, scale: new Vector2(0.125f)),
                 new Sprite("Sprites/background2-3", false, scale: new Vector2(0.125f)),
                 new Sprite("Sprites/bubbles", true, scale: new(0.5f)),
-                new SpriteSheet("Sprites/treasure", 2,1, false, scale: new(0.125f), offset: new Vector2(0.5f))
+                new SpriteSheet("Sprites/treasure", 2,1, false, scale: new(0.125f), offset: new Vector2(0.5f)),
+                new Sprite("Sprites/intro", false, scale: new(1/33f)),
+                new Sprite("Sprites/outro", false, scale: new(1/33f))
             );
 
             SetScenes(
+                ("End", Outro.Load),
+                ("Intro", Intro.Load),
                 ("1-1", Level1_1.Load),
                 ("1-2", Level1_2.Load),
                 ("1-3", Level1_3.Load),

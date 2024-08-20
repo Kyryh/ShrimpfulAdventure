@@ -111,6 +111,30 @@ namespace ShrimpfulAdventure.Components {
                     new SpriteRenderer() {
                         spriteName = "Sprites/ShrimpTogether"
                     },
+                    new AnimationController() {
+                        StartingAnimation = "Idle",
+                        Animations = [
+                            new Animation("Idle", 
+                                new Animation.Frame(2, TimeSpan.Zero)
+                            ),
+                            new Animation("Childless",
+                                new Animation.Frame(0, TimeSpan.Zero)
+                            ),
+                            new Animation("Jump", "Idle",
+                                //new Animation.Frame(3, TimeSpan.FromSeconds(0.05f)),
+                                //new Animation.Frame(4, TimeSpan.FromSeconds(0.05f)),
+                                //new Animation.Frame(5, TimeSpan.FromSeconds(0.05f)),
+                                //new Animation.Frame(6, TimeSpan.FromSeconds(0.05f)),
+                                //new Animation.Frame(7, TimeSpan.FromSeconds(0.05f)),
+                                new Animation.Frame(8, TimeSpan.FromSeconds(0.1f)),
+                                new Animation.Frame(9, TimeSpan.FromSeconds(0.1f)),
+                                new Animation.Frame(11, TimeSpan.FromSeconds(0.1f)),
+                                new Animation.Frame(12, TimeSpan.FromSeconds(0.1f)),
+                                new Animation.Frame(13, TimeSpan.FromSeconds(0.1f)),
+                                new Animation.Frame(14, TimeSpan.FromSeconds(0.1f))
+                            )
+                        ]
+                    },
                     new FatherController() {
                         GroundAcceleration = 0.2f,
                         AirAcceleration = 0.2f,
@@ -140,6 +164,15 @@ namespace ShrimpfulAdventure.Components {
                         components: [
                             new SpriteRenderer() {
                                 spriteName = "Sprites/ShrimpBaby"
+                            },
+
+                            new AnimationController() {
+                                StartingAnimation = "Idle",
+                                Animations = [
+                                    new Animation("Idle",
+                                        new Animation.Frame(0, TimeSpan.Zero)
+                                    )
+                                ]
                             },
                             new BabyController() {
                                 GroundAcceleration = 0.2f,

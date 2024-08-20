@@ -12,8 +12,9 @@ using System.Threading.Tasks;
 
 namespace ShrimpfulAdventure.Components {
     internal class ShrimpController : Component {
-        AnimationController ac;
+        public AnimationController ac;
         protected Collider collider;
+        SpriteRenderer sr;
         TimeSpan timeSinceGrounded = TimeSpan.Zero;
         internal Vector2 velocity = Vector2.Zero;
 
@@ -36,6 +37,7 @@ namespace ShrimpfulAdventure.Components {
             ac = GameObject.GetComponent<AnimationController>();
             collider = GameObject.GetComponent<Collider>();
             collider.OnCollision += OnCollision;
+            sr = GameObject.GetComponent<SpriteRenderer>();
         }
 
         public override void Start() {
@@ -104,17 +106,25 @@ namespace ShrimpfulAdventure.Components {
             int direction = 0;
             if (controlling) {
                 if (timeSinceGrounded < TimeSpan.FromSeconds(CoyoteTimeSeconds) && Input.JumpPressed()) {
-                    timeSinceGrounded += TimeSpan.FromSeconds(0.2f);
-                    velocity.Y = JumpForce;
+                    Jump();
                 }
-
+                int inputDirection = 0;
                 if (MathF.Abs(velocity.X) > MaxSpeed) {
                     direction = -MathF.Sign(velocity.X);
                 } else {
-                    if (Input.LeftPressed())
+                    if (Input.LeftPressed()) {
+                        inputDirection--;
                         direction--;
-                    if (Input.RightPressed())
+                    }
+                    if (Input.RightPressed()) {
+                        inputDirection++;
                         direction++;
+                    }
+                    if (inputDirection == 1) {
+                        sr.FlipX = false;
+                    } else if (inputDirection == -1) {
+                        sr.FlipX = true;
+                    }
                 }
 
 
@@ -134,6 +144,11 @@ namespace ShrimpfulAdventure.Components {
             Transform.Position += velocity;
 
             timeSinceGrounded += TimeSpan.FromSeconds(deltaTime);
+        }
+
+        protected virtual void Jump() {
+            timeSinceGrounded += TimeSpan.FromSeconds(0.2f);
+            velocity.Y = JumpForce;
         }
 
         internal virtual void UpdateCamera() {

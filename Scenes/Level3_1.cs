@@ -7,11 +7,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Media;
 
 namespace ShrimpfulAdventure.Scenes {
     internal class Level3_1 {
         public static void Load() {
 
+            MediaPlayer.Play(KGame.GetContent<Song>("Music/World3"));
+            MediaPlayer.IsRepeating = true;
 
             MapLoader.LoadMap("3-1", "Sprites/tilesets1"); 
 

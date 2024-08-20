@@ -1,6 +1,8 @@
-﻿using KEngine.Components;
+﻿using KEngine;
+using KEngine.Components;
 using KEngine.Components.Colliders;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,12 +34,18 @@ namespace ShrimpfulAdventure.Components {
             Camera.MainCamera.Transform.Position = GetCameraPosition();
         }
 
+        protected override void Jump() {
+            base.Jump();
+            KGame.GetContent<SoundEffect>("Sound/jumpBaby").Play(0.2f, (float)new Random().NextDouble() * 0.4f - 0.5f, 0);
+        }
+
         void Switch() {
             GameObject.active = false;
             Transform.Position = Vector2.Zero;
             velocity = Vector2.Zero;
             father.controlling = true;
             father.UpdateCamera();
+            father.ac.SetAnimation("Idle");
         }
 
         Vector2 GetCameraPosition() {
