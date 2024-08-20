@@ -53,7 +53,7 @@ namespace ShrimpfulAdventure {
                 new SpriteSheet("Sprites/trapdoor", 3, 1, false, scale: new Vector2(0.125f), offset: new Vector2(0.5f,1)),
                 new SpriteSheet("Sprites/lever", 3, 1, offset: new Vector2(0.5f)),
                 new SpriteSheet("Sprites/button", 2, 1, false, new Vector2(0.5f,0.5f), new Vector2(0.125f)),
-                new Sprite("Sprites/background1", false, offset: new Vector2(-.4875f, -.475f), scale: new Vector2(0.125f)),
+                new Sprite("Sprites/background1", false, offset: new Vector2(-.4875f, -.475f), scale: new Vector2(0.15f)),
                 new Sprite("Sprites/bubbles", true, scale: new(0.5f))
             );
 
