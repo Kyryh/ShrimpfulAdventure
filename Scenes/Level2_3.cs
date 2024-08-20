@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using KEngine.Components.DrawableComponents;
+using KEngine;
+using Microsoft.Xna.Framework;
 using ShrimpfulAdventure.Components;
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,17 @@ using System.Threading.Tasks;
 namespace ShrimpfulAdventure.Scenes {
     internal class Level2_3 {
         public static void Load() {
+
+
+            new GameObject(
+                "Castle",
+                position: new Vector2(24.5f, -15),
+                components: [
+                    new SpriteRenderer() {
+                        spriteName = "Sprites/background2-3"
+                    }
+                ]
+            ).Load();
 
             MapLoader.LoadMap("2-3", "Sprites/tilesets1");
 
