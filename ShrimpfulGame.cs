@@ -54,13 +54,15 @@ namespace ShrimpfulAdventure {
                 new SpriteSheet("Sprites/lever", 3, 1, offset: new Vector2(0.5f)),
                 new SpriteSheet("Sprites/button", 2, 1, false, new Vector2(0.5f,0.5f), new Vector2(0.125f)),
                 new Sprite("Sprites/background1", false, offset: new Vector2(-.4875f, -.475f), scale: new Vector2(0.15f)),
+                new Sprite("Sprites/background2", false, offset: new Vector2(-.4875f, -.475f), scale: new Vector2(0.15f)),
                 new Sprite("Sprites/bubbles", true, scale: new(0.5f))
             );
 
             SetScenes(
+                ("2-1", Level2_1.Load),
+                ("1-1", Level1_1.Load),
                 ("1-2", Level1_2.Load),
-                ("1-3", Level1_3.Load),
-                ("1-1", Level1_1.Load)
+                ("1-3", Level1_3.Load)
             );
         }
 
