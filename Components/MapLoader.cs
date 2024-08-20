@@ -321,7 +321,7 @@ namespace ShrimpfulAdventure.Components {
                 IsTrigger = true
             };
             collider.OnCollision += (other, _) => {
-                if (other.GameObject.Name == "Shrimp") {
+                if (other.GameObject.Name == "Shrimp" || other.GameObject.Name == "Baby") {
                     KGame.Instance.LoadScene(nextLevel);
                 }
             };
