@@ -28,6 +28,8 @@ namespace ShrimpfulAdventure.Components {
         public float CoyoteTimeSeconds { get; init; } = 0.2f;
         public float PushingForce { get; init; } = 0.02f;
 
+        public float LittleJumpForce { get; init; } = 0.1f;
+
         public bool controlling = true;
         public override void Initialize() {
             base.Initialize();
@@ -118,7 +120,11 @@ namespace ShrimpfulAdventure.Components {
 
             }
 
-            velocity.X += GetMovement(direction, deltaTime);
+            var movement = GetMovement(direction, deltaTime);
+            if (movement != 0f && timeSinceGrounded == TimeSpan.Zero) {
+                velocity.Y = LittleJumpForce;
+            }
+            velocity.X += movement;
             //velocity.X = MathF.Max(MathF.Min(velocity.X, MaxSpeed), -MaxSpeed);
 
 
