@@ -208,18 +208,6 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/trapdoor.png
 
-#begin Sprites/treasure.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/treasure.png
-
 #begin Sprites/waterberry shrimp.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -231,7 +219,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/waterberry shrimp.png;Sprites/ShrimpBaby.png
-
-#begin valori.txt
-/copy:valori.txt
 
