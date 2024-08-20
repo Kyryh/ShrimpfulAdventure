@@ -74,7 +74,7 @@ namespace ShrimpfulAdventure {
             var mstate = Mouse.GetState();
 
             var pos = Camera.MainCamera.ScreenToWorld(new Vector2(mstate.X, mstate.Y));
-            Console.WriteLine(new Vector2(MathF.Round(pos.X), MathF.Round(pos.Y)));
+            Console.WriteLine(new Vector2(MathF.Round(pos.X*4)/4, MathF.Round(pos.Y*4)/4));
 
             Input.Update();
 
