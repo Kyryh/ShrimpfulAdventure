@@ -12,6 +12,7 @@ namespace ShrimpfulAdventure.Components {
     internal class Trapdoor : Component {
         public bool IsLong { get; init; }
 
+        public bool InitiallyOpen { get; init; }
         public bool IsOpen => !collider.IsActive;
 
         SpriteRenderer sr;
@@ -20,6 +21,8 @@ namespace ShrimpfulAdventure.Components {
             base.Initialize();
             sr = GameObject.GetComponent<SpriteRenderer>();
             collider = GameObject.GetComponent<Collider>();
+            if (InitiallyOpen)
+                Open();
         }
 
         public void Switch() {
