@@ -32,6 +32,8 @@ namespace ShrimpfulAdventure.Scenes {
             MapLoader.SpawnCurrent(new Vector2(36.5f, -21.5f), 24, 5, 0f);
 
             MapLoader.CreateBackground("Sprites/background1");
+
+            MapLoader.AddEndTrigger("1-1", new Vector2(36.5f, 0), new Vector2(5, 1));
         }
     }
 }
