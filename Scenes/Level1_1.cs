@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ShrimpfulAdventure.Scenes {
-    internal class Scene1 {
+    internal class Level1_1 {
         public static void Load() {
 
             MapLoader.LoadMap("1-1", "Sprites/tilesets1");
@@ -33,7 +33,7 @@ namespace ShrimpfulAdventure.Scenes {
 
             MapLoader.CreateBackground("Sprites/background1");
 
-            MapLoader.AddEndTrigger("1-1", new Vector2(36.5f, 0), new Vector2(5, 1));
+            MapLoader.AddEndTrigger("1-2", new Vector2(36.5f, 0), new Vector2(5, 1));
         }
     }
 }
