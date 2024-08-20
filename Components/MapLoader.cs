@@ -180,16 +180,18 @@ namespace ShrimpfulAdventure.Components {
                     },
                     new SpriteRenderer() {
                         spriteName = "Sprites/rock"
-                    }
+                    },
+                    new Rock()
                 ],
                 position: position
             ).Load();
         }
 
         
-        public static Trapdoor SpawnTrapdoor(Vector2 position, float rotation, bool isLong) {
+        public static Trapdoor SpawnTrapdoor(Vector2 position, float rotation, bool isLong, bool open = false) {
             Trapdoor trapdoor = new Trapdoor() {
-                IsLong = isLong
+                IsLong = isLong,
+                InitiallyOpen = open
             };
             new GameObject(
                 "Trapdoor",
