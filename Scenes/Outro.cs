@@ -1,5 +1,7 @@
 ﻿using KEngine;
+using KEngine.Components;
 using KEngine.Components.DrawableComponents;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
@@ -22,6 +24,9 @@ namespace ShrimpfulAdventure.Scenes {
                     }
                 ]
             ).Load();
+
+            Camera.MainCamera.Transform.Position = Vector2.Zero;
+            Camera.MainCamera.Size = 20f;
         }
     }
 }
