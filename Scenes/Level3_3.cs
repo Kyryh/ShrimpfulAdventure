@@ -16,6 +16,28 @@ namespace ShrimpfulAdventure.Scenes {
 
             MapLoader.LoadMap("3-3", "Sprites/tilesets1");
 
+
+            new GameObject(
+                "Treasure",
+                position: new Vector2(36.5f, -11.5f),
+                components: [
+                    new SpriteRenderer() {
+                        spriteName = "Sprites/treasure"
+                    },
+                    new Interactable() {
+                        OnInteract = (i) => {
+                            KGame.Instance.LoadScene("End");
+                            return 0;
+                        }
+                    },
+                    new BoxCollider() {
+                        Width = 4f,
+                        Height = 2f,
+                        IsTrigger = true
+                    }
+                ]
+            ).Load();
+
             MapLoader.SpawnShrimps(new Vector2(0.5f, -14.75f));
 
             MapLoader.SpawnRock(new Vector2(18.5f, -14.5f));
@@ -54,26 +76,6 @@ namespace ShrimpfulAdventure.Scenes {
 
             MapLoader.SpawnLever(new Vector2(36.5f, -21), td4.Switch, td4.Switch);
 
-            new GameObject(
-                "Treasure",
-                position: new Vector2(36.5f, -11.5f),
-                components: [
-                    new SpriteRenderer() {
-                        spriteName = "Sprites/treasure"
-                    },
-                    new Interactable() {
-                        OnInteract = (i) => {
-                            KGame.Instance.LoadScene("End");
-                            return 0;
-                        }
-                    },
-                    new BoxCollider() {
-                        Width = 4f,
-                        Height = 2f,
-                        IsTrigger = true
-                    }
-                ]
-            ).Load();
 
             MapLoader.CreateBackground("Sprites/background4");
 
