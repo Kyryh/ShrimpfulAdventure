@@ -68,7 +68,7 @@ namespace ShrimpfulAdventure {
             );
 
             SetScenes(
-                ("Intro", Intro.Load),
+                ("Intro",  Intro.Load),
                 ("1-1", Level1_1.Load),
                 ("1-2", Level1_2.Load),
                 ("1-3", Level1_3.Load),
@@ -78,7 +78,7 @@ namespace ShrimpfulAdventure {
                 ("3-1", Level3_1.Load),
                 ("3-2", Level3_2.Load),
                 ("3-3", Level3_3.Load),
-                ("End", Outro.Load)
+                ("End",    Outro.Load)
             );
         }
 
