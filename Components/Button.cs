@@ -1,6 +1,8 @@
-﻿using KEngine.Components;
+﻿using KEngine;
+using KEngine.Components;
 using KEngine.Components.Colliders;
 using KEngine.Components.DrawableComponents;
+using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +37,7 @@ namespace ShrimpfulAdventure.Components {
             wasPressed = isPressed;
             if (isPressed) {
                 OnPress();
+                KGame.GetContent<SoundEffect>("Sound/lever").Play(0.2f, (float)new Random().NextDouble() * 0.4f - 0.5f, 0);
                 sr.spriteIndex = 1;
             } else {
                 OnDepress();
