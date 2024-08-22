@@ -26,7 +26,7 @@ namespace ShrimpfulAdventure.Scenes {
             ).Load();
 
             Camera.MainCamera.Transform.Position = Vector2.Zero;
-            Camera.MainCamera.Size = 20f;
+            Camera.MainCamera.Size = 10f;
         }
     }
 }
