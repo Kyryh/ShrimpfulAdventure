@@ -14,6 +14,7 @@ using ShrimpfulAdventure.Scenes;
 namespace ShrimpfulAdventure {
     public class ShrimpfulGame : KGame {
         public static float Time { private set; get; }
+        public static Random Random { private set; get; }
         public ShrimpfulGame() {
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -22,6 +23,7 @@ namespace ShrimpfulAdventure {
                 "Bubbles",
                 "Default",
             ];
+            Random = new Random();
             //debugDrawGameObjectsPosition = true;
             //debugDrawColliders = true;
         }
@@ -66,7 +68,6 @@ namespace ShrimpfulAdventure {
             );
 
             SetScenes(
-                ("3-3", Level3_3.Load),
                 ("Intro", Intro.Load),
                 ("1-1", Level1_1.Load),
                 ("1-2", Level1_2.Load),
@@ -76,6 +77,7 @@ namespace ShrimpfulAdventure {
                 ("2-3", Level2_3.Load),
                 ("3-1", Level3_1.Load),
                 ("3-2", Level3_2.Load),
+                ("3-3", Level3_3.Load),
                 ("End", Outro.Load)
             );
         }

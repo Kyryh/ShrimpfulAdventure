@@ -14,10 +14,12 @@ namespace ShrimpfulAdventure.Components {
         SpriteRenderer sr;
         bool wasPressed = false;
         bool isPressed = false;
+        SoundEffect clickSound;
         public Action OnPress { private get; init; }
         public Action OnDepress { private get; init; }
         public override void Initialize() {
             base.Initialize();
+            clickSound = KGame.GetContent<SoundEffect>("Sound/lever");
             GameObject.GetComponent<Collider>().OnCollision += Button_OnCollision;
             sr = GameObject.GetComponent<SpriteRenderer>();
         }
@@ -37,7 +39,7 @@ namespace ShrimpfulAdventure.Components {
             wasPressed = isPressed;
             if (isPressed) {
                 OnPress();
-                KGame.GetContent<SoundEffect>("Sound/lever").Play(0.2f, (float)new Random().NextDouble() * 0.4f - 0.5f, 0);
+                clickSound.Play(0.2f, (float)ShrimpfulGame.Random.NextDouble() * 0.4f - 0.5f, 0);
                 sr.spriteIndex = 1;
             } else {
                 OnDepress();

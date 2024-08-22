@@ -13,9 +13,10 @@ namespace ShrimpfulAdventure.Components {
     internal class BabyController : ShrimpController {
         ShrimpController father;
         public bool justSpawned;
+        SoundEffect jumpSound;
         public override void Initialize() {
             father = Transform.Parent.GameObject.GetComponent<ShrimpController>();
-
+            jumpSound = KGame.GetContent<SoundEffect>("Sound/jumpBaby");
             base.Initialize();
         }
         public override void Update(float deltaTime) {
@@ -37,7 +38,7 @@ namespace ShrimpfulAdventure.Components {
 
         protected override void Jump() {
             base.Jump();
-            KGame.GetContent<SoundEffect>("Sound/jumpBaby").Play(0.2f, (float)new Random().NextDouble() * 0.4f - 0.5f, 0);
+            jumpSound.Play(0.2f, (float)ShrimpfulGame.Random.NextDouble() * 0.4f - 0.5f, 0);
         }
 
         void Switch() {

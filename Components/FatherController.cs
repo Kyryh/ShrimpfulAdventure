@@ -13,10 +13,11 @@ using System.Threading.Tasks;
 namespace ShrimpfulAdventure.Components {
     internal class FatherController : ShrimpController {
         BabyController baby;
-
+        SoundEffect jumpSound;
         public override void Initialize() {
             base.Initialize();
             baby = Transform.children[0].GameObject.GetComponent<BabyController>();
+            jumpSound = KGame.GetContent<SoundEffect>("Sound/jumpFather");
         }
         public override void Update(float deltaTime) {
             base.Update(deltaTime);
@@ -28,7 +29,7 @@ namespace ShrimpfulAdventure.Components {
         protected override void Jump() {
             base.Jump();
             ac.SetAnimation("Jump", true);
-            KGame.GetContent<SoundEffect>("Sound/jumpFather").Play(0.2f, (float)new Random().NextDouble()*0.4f-0.5f, 0);
+            jumpSound.Play(0.2f, (float)ShrimpfulGame.Random.NextDouble()*0.4f-0.5f, 0);
         }
         void Switch() {
             ac.SetAnimation("Childless");
