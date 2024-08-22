@@ -18,6 +18,9 @@
   <ItemGroup>
     <Content Include="Content\Content.mgcb" />
     <Content Include="icona.ico" />
+	<EmbeddedResource Include="Icon.bmp">
+		<LogicalName>Icon.bmp</LogicalName>
+	</EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
