@@ -23,7 +23,7 @@ namespace ShrimpfulAdventure.Components {
 
         static readonly string mapDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Content", "Maps");
         public static void LoadMap(string mapName, string tileSheet) {
-            byte[,] map = LoadMap(mapName + ".txt");
+            byte[,] map = LoadMap(mapName + ".bin");
 
             List<Component> components = CalculateColliders(map);
 
@@ -83,27 +83,23 @@ namespace ShrimpfulAdventure.Components {
         }
 
         static byte[,] LoadMap(string fileName) {
-            var mapData = File.ReadAllLines(Path.Combine(mapDirectory, fileName));
-            var mapWidth = int.Parse(mapData[0]);
-            var mapHeight = int.Parse(mapData[1]);
+            using FileStream mapData = File.OpenRead(Path.Combine(mapDirectory, fileName));
+            var mapWidth = mapData.ReadByte();
+            var mapHeight = mapData.ReadByte();
 
             var map = new byte[mapHeight, mapWidth];
 
             for (int j = 0; j < mapHeight; j++) {
-                var row = mapData[2 + j];
                 for (int k = 0; k < mapWidth; k++) {
-                    var tile = byte.Parse(row[(k * 4)..(k * 4 + 3)]);
-                    map[j, k] = tile;
+                    //var tile = byte.Parse(row[(k * 4)..(k * 4 + 3)]);
+                    //map[j, k] = tile;
+                    map[j, k] = (byte)mapData.ReadByte();
                 }
             }
             return map;
         }
 
         public static void SpawnShrimps(Vector2 position) {
-
-            string directory = Path.Combine(Directory.GetCurrentDirectory(), "Content");
-            var data = File.ReadAllLines(Path.Combine(directory, "valori.txt"));
-
             new GameObject(
                 "Shrimp",
                 position: position,
