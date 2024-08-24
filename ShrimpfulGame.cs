@@ -91,7 +91,7 @@ namespace ShrimpfulAdventure {
             Input.Update();
 
             if (Input.RestartPressed())
-                KGame.Instance.ReloadScene();
+                ReloadScene();
 
             base.Update(gameTime);
         }

@@ -345,7 +345,7 @@ namespace ShrimpfulAdventure.Components {
             };
             collider.OnCollision += (other, _) => {
                 if (other.GameObject.Name == "Shrimp" || other.GameObject.Name == "Baby") {
-                    KGame.Instance.LoadScene(nextLevel);
+                    KGame.LoadScene(nextLevel);
                 }
             };
             new GameObject(

@@ -26,7 +26,7 @@ namespace ShrimpfulAdventure.Scenes {
                     },
                     new Interactable() {
                         OnInteract = (i) => {
-                            KGame.Instance.LoadScene("End");
+                            KGame.LoadScene("End");
                             return 0;
                         }
                     },

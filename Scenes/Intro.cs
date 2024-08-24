@@ -29,7 +29,7 @@ namespace ShrimpfulAdventure.Scenes {
     class IntroComponent :Component {
         public override void Update(float deltaTime) {
             if (Keyboard.GetState().GetPressedKeyCount() > 0)
-                KGame.Instance.LoadScene("1-1");
+                KGame.LoadScene("1-1");
         }
     }
 }
