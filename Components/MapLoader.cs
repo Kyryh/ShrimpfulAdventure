@@ -198,8 +198,8 @@ namespace ShrimpfulAdventure.Components {
                 "Rock",
                 components: [
                     new BoxCollider() {
-                        Width = 2f,
-                        Height = 2f
+                        Width = 1.9f,
+                        Height = 1.9f
                     },
                     new SpriteRenderer() {
                         spriteName = "Sprites/rock"
