@@ -153,44 +153,42 @@ namespace ShrimpfulAdventure.Components {
                         Height = 2f,
                         Layer = "BabyFatherInteraction"
                     }
-                ],
-                children: [
-                    new GameObject(
-                        "Baby",
-                        components: [
-                            new SpriteRenderer() {
-                                spriteName = "Sprites/ShrimpBaby"
-                            },
-
-                            new AnimationController() {
-                                StartingAnimation = "Idle",
-                                Animations = [
-                                    new Animation("Idle",
-                                        new Animation.Frame(0, TimeSpan.Zero)
-                                    )
-                                ]
-                            },
-                            new BabyController() {
-                                GroundAcceleration = 0.2f,
-                                AirAcceleration = 0.2f,
-                                GroundDeceleration = 0.4f,
-                                AirDeceleration = 0.4f,
-                                MaxSpeed = 0.15f,
-                                JumpForce = 0.18f,
-                                Gravity = 0.4f,
-                                CoyoteTimeSeconds = 0.2f,
-                                PushingForce = -0.005f,
-                                LittleJumpForce = 0.03f
-                            },
-                            new BoxCollider() {
-                                Width = 7/8f,
-                                Height = 7/8f,
-                                Layer = "ShrimpBaby"
-                            }
-                        ],
-                        active: false
-                    )
                 ]
+            ).Load();
+            new GameObject(
+                "Baby",
+                components: [
+                    new SpriteRenderer() {
+                        spriteName = "Sprites/ShrimpBaby"
+                    },
+
+                    new AnimationController() {
+                        StartingAnimation = "Idle",
+                        Animations = [
+                            new Animation("Idle",
+                                new Animation.Frame(0, TimeSpan.Zero)
+                            )
+                        ]
+                    },
+                    new BabyController() {
+                        GroundAcceleration = 0.2f,
+                        AirAcceleration = 0.2f,
+                        GroundDeceleration = 0.4f,
+                        AirDeceleration = 0.4f,
+                        MaxSpeed = 0.15f,
+                        JumpForce = 0.18f,
+                        Gravity = 0.4f,
+                        CoyoteTimeSeconds = 0.2f,
+                        PushingForce = -0.005f,
+                        LittleJumpForce = 0.03f
+                    },
+                    new BoxCollider() {
+                        Width = 7/8f,
+                        Height = 7/8f,
+                        Layer = "ShrimpBaby"
+                    }
+                ],
+                active: false
             ).Load();
         }
 

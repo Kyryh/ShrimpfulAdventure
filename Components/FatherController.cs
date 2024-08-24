@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace ShrimpfulAdventure.Components {
     internal class FatherController : ShrimpController {
-        BabyController baby;
+        public static FatherController Instance { private set; get; }
         SoundEffect jumpSound;
         public override void Initialize() {
             base.Initialize();
-            baby = Transform.children[0].GameObject.GetComponent<BabyController>();
+            Instance = this;
             jumpSound = KGame.GetContent<SoundEffect>("Sound/jumpFather");
         }
         public override void Update(float deltaTime) {
@@ -34,10 +34,11 @@ namespace ShrimpfulAdventure.Components {
         void Switch() {
             ac.SetAnimation("Childless");
             controlling = false;
-            baby.GameObject.active = true;
-            baby.justSpawned = true;
-            baby.velocity = velocity;
-            baby.UpdateCamera();
+            BabyController.Instance.GameObject.active = true;
+            BabyController.Instance.justSpawned = true;
+            BabyController.Instance.Transform.Position = Transform.Position;
+            BabyController.Instance.velocity = velocity;
+            BabyController.Instance.UpdateCamera();
         }
 
         internal override void UpdateCamera() {

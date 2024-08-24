@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace ShrimpfulAdventure.Components {
     internal class BabyController : ShrimpController {
-        ShrimpController father;
+        public static BabyController Instance { private set; get; }
         public bool justSpawned;
         SoundEffect jumpSound;
         public override void Initialize() {
-            father = Transform.Parent.GameObject.GetComponent<ShrimpController>();
             jumpSound = KGame.GetContent<SoundEffect>("Sound/jumpBaby");
+            Instance = this;
             base.Initialize();
         }
         public override void Update(float deltaTime) {
@@ -45,9 +45,9 @@ namespace ShrimpfulAdventure.Components {
             GameObject.active = false;
             Transform.Position = Vector2.Zero;
             velocity = Vector2.Zero;
-            father.controlling = true;
-            father.UpdateCamera();
-            father.ac.SetAnimation("Idle");
+            FatherController.Instance.controlling = true;
+            FatherController.Instance.UpdateCamera();
+            FatherController.Instance.ac.SetAnimation("Idle");
         }
 
         Vector2 GetCameraPosition() {
