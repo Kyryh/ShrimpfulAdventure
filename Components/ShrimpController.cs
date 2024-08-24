@@ -132,7 +132,7 @@ namespace ShrimpfulAdventure.Components {
 
             var movement = GetMovement(direction, deltaTime);
             if (movement != 0f && timeSinceGrounded == TimeSpan.Zero) {
-                velocity.Y = LittleJumpForce;
+                velocity.Y += LittleJumpForce;
             }
             velocity.X += movement;
             //velocity.X = MathF.Max(MathF.Min(velocity.X, MaxSpeed), -MaxSpeed);
